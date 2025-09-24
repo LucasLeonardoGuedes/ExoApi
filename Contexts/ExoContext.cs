@@ -11,20 +11,22 @@ namespace Exo.WebApi.Contexts
         public ExoContext()
         {
         }
-        public ExoContext(DbContextOptions<ExoContext> options) : base (options)
+        public ExoContext(DbContextOptions<ExoContext> options) : base(options)
         {
 
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
-            if(!optionsBuilder.IsConfigured)
+            if (!optionsBuilder.IsConfigured)
             {
                 //Essa string de conexão foi dependente da SUA máquina.
                 optionsBuilder.UseSqlServer("Server=LEONARDO\\SQLEXPRESS;" + "Database=ExoApi;Trusted_Connection=True;");
 
             }
         }
-        public DbSet<Projeto> Projetos {get; set;}
+        public DbSet<Projeto> Projetos { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public object Usuario { get; internal set; }
     }
 }
